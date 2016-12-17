@@ -1,29 +1,26 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var connect = require('gulp-connect');
- 
-gulp.task('connect', function(){
-  connect.server({
-    root: 'public',
-    livereload: true
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const browserSync = require('browser-sync').create();
+
+gulp.task('serve', function(){
+
+  browserSync.init({
+    server: {
+      baseDir: 'public',
+      index: 'index.html'
+    }
   });
+
+  gulp.watch("scss/**/*.scss", ['sass']);
+  gulp.watch("public/*").on('change', browserSync.reload);
 });
- 
+
 // keeps gulp from crashing for scss errors
 gulp.task('sass', function () {
-  return gulp.src('./sass/*.scss')
-      .pipe(sass({ errLogToConsole: true }))
-      .pipe(gulp.dest('./public/css'));
+  return gulp.src("scss/styles.scss")
+    .pipe(sass())
+    .pipe(gulp.dest("public/css"))
+    .pipe(browserSync.stream());
 });
- 
-gulp.task('livereload', function (){
-  gulp.src('./public/**/*')
-  .pipe(connect.reload());
-});
- 
-gulp.task('watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
-  gulp.watch('./public/**/*', ['livereload']);
-});
- 
-gulp.task('default', ['connect', 'watch', 'sass']);
+
+gulp.task('default', ['serve', 'sass']);

@@ -1,3 +1,7 @@
-node_modules/*
-public/*
+node_modules/
+*.log
+
+public/css/
 !public/index.html
+
+.DS_Store

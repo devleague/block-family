@@ -2,11 +2,13 @@
 
 ### Set up:
 
-1.  Run gulp. This project uses the [Gulp + Livereload + Sass Project](https://gist.github.com/kellishouts/2c7cde625491ad53fb3c) boilerplate, however all of this should already be set up for you.
+1. Fork and Clone this repository onto your computer.
+1. Install dependencies: `$ npm install`
+1. `$ npm run dev` will start browser-sync which will reload the browser for you automatically as you make changes to your Sass files (`.scss`) or HTML files.
 
-2.  Check that Livereload is running.
+**first time test*
 
-3.  Check that sass is compiling. (set a variable, use the variable, then check if gulp compiles to a proper css file)
+Find the file `styles.scss` and change the `background-color` declaration's value to `magenta` and save your file. Your browser *should* refresh automatically.
 
 ---
 
