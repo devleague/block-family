@@ -11,15 +11,15 @@ gulp.task('serve', function(){
     }
   });
 
-  gulp.watch("scss/**/.scss", ['sass']);
-  gulp.watch("public/*.html").on('change', browserSync.reload);
+  gulp.watch("scss/**/*.scss", ['sass']);
+  gulp.watch("public/*").on('change', browserSync.reload);
 });
 
 // keeps gulp from crashing for scss errors
 gulp.task('sass', function () {
   return gulp.src("scss/styles.scss")
     .pipe(sass())
-    .pipe(gulp.dest("public/styles"))
+    .pipe(gulp.dest("public/css"))
     .pipe(browserSync.stream());
 });
 
