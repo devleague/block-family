@@ -12,7 +12,7 @@ gulp.task('serve', function(){
   });
 
   gulp.watch("scss/**/*.scss", ['sass']);
-  gulp.watch("public/*").on('change', browserSync.reload);
+  gulp.watch("public/**/*").on('change', browserSync.reload);
 });
 
 // keeps gulp from crashing for scss errors
