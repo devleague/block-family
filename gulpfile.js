@@ -18,7 +18,7 @@ gulp.task('serve', function(){
 // keeps gulp from crashing for scss errors
 gulp.task('sass', function () {
   return gulp.src("scss/styles.scss")
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest("public/css"))
     .pipe(browserSync.stream());
 });
